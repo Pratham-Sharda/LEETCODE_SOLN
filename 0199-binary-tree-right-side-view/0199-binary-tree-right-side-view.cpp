@@ -27,9 +27,29 @@ void rig(TreeNode* root,int level,vector<int> & ans){
        if(root==NULL){
         return ans;
        }
+        queue<TreeNode*> q;
+        q.push(root);
 
-       rig(root,0,ans);
-       return ans;
+        while(!q.empty()){
+            int size=q.size();
+
+            for(int i=0;i<size;i++){
+                TreeNode* temp=q.front();
+                q.pop();
+                if(i==0){
+                    ans.push_back(temp->val);
+                }
+                if(temp->right){
+                    q.push(temp->right);
+                }if(temp->left){
+                    q.push(temp->left);
+                }
+            }
+
+        }
+
+        return ans;
+
 
     }
 };
