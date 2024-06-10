@@ -11,7 +11,7 @@
  */
 class Solution {
 public:
-    TreeNode* building(vector<int>& preorder,vector<int>& inorder,int ps,int pe,int is,int ie,unordered_map<int,int> mpp){
+    TreeNode* building(vector<int>& preorder,vector<int>& inorder,int ps,int pe,int is,int ie,map<int,int>& mpp){
         if(ps>pe || is>ie){
             return NULL;
         }
@@ -23,7 +23,7 @@ public:
         return root;
     }
     TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) {
-        unordered_map<int,int> mpp;
+        map<int,int> mpp;
         int n=inorder.size();
         for(int i=0;i<n;i++){
             mpp[inorder[i]]=i;
