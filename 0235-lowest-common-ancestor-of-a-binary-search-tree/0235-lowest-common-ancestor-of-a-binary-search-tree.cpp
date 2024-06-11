@@ -18,15 +18,17 @@ public:
 
         while(temp!=NULL){
 
-            if(temp->val>=pval && temp->val<=qval ){
-                break;
-            }else if(temp->val>=qval && temp->val<=pval){
-                break;
-            }
+            // if(temp->val>=pval && temp->val<=qval ){
+            //     break;
+            // }else if(temp->val>=qval && temp->val<=pval){
+            //     break;
+            // }
             if(temp->val>pval && temp->val >qval){
                 temp=temp->left;
             }else if(temp->val<pval && temp->val <qval){
                 temp=temp->right;
+            }else{
+                break;
             }
         }
 
