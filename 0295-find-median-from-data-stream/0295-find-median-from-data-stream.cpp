@@ -13,13 +13,13 @@ public:
             rightmin.push(num);
         }
 
-        // if(leftmax.size()-rightmin.size()>1){
-        //     rightmin.push(leftmax.top());leftmax.pop();
-        // }
+
         if(leftmax.size()<rightmin.size()){
             leftmax.push(rightmin.top());rightmin.pop();
         }
-        
+        if(leftmax.size()-rightmin.size()>1){
+            rightmin.push(leftmax.top());leftmax.pop();
+        }
     }
     
     double findMedian() {
