@@ -38,12 +38,42 @@ public:
         int n=mat.size();
         int m=mat[0].size();
         vector<vector<int>> ans(n,vector<int>(m,0));
-
-        for(int i=0;i<mat.size();i++){
-            for(int j=0;j<mat[0].size();j++){
-                vector<vector<int>> visited(n,vector<int>(m,0));
-                ans[i][j]=find(i,j,mat,visited);
+        vector<vector<int>> visited(n,vector<int>(m,0));
+        queue<pair<pair<int,int>,int>> q;
+        
+        for(int i=0;i<n;i++){
+            for (int j=0;j<m;j++){
+                if(mat[i][j]==0){
+                    ans[i][j]=0;
+                    visited[i][j]=8;
+                    q.push({{i,j},0});
+                }else{
+                    visited[i][j]=-1;
+                }
             }
+        }
+        int delrow[]={-1,0,1,0};
+        int delcol[]={0,1,0,-1};
+        while(!q.empty()){
+            int row=q.front().first.first;
+            int col=q.front().first.second;
+            int dis=q.front().second;
+
+            q.pop();
+            for(int i=0;i<4;i++){
+                int nr=row+delrow[i];
+                int nl=col+delcol[i];
+                if(nr>=0 && nr<mat.size() && nl>=0 &&nl<mat[0].size()){
+                    if(visited[nr][nl]==8){
+                            continue;
+                    }else if(visited[nr][nl]==-1){
+                        ans[nr][nl]=dis+1;
+                        visited[nr][nl]=8;
+                        q.push({{nr,nl},dis+1});
+                    }
+                }
+            }
+
         }
         return ans;
     }
