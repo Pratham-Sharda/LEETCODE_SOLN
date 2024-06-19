@@ -13,9 +13,9 @@ public:
             int curcol=curr[2];
 
             for(auto i:graph[curnode]){
-                if(i==parent){
-                    continue;
-                }
+                // if(i==parent){
+                //     continue;
+                // }
                 if(!visited[i]){
                     visited[i]=1;
                     colour[i]=!curcol;
