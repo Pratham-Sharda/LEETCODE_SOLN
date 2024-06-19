@@ -20,7 +20,7 @@ public:
                     visited[i]=1;
                     colour[i]=!curcol;
                     q.push({i,curnode,!curcol});
-                }else if(visited[i] && colour[i]==curcol){
+                }else if(colour[i]==curcol){
                     return false;
                 }
             }
