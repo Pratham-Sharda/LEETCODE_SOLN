@@ -13,14 +13,14 @@ public:
             int curcol=curr[2];
 
             for(auto i:graph[curnode]){
-                if(i==parent){
-                    continue;
-                }
+                // if(i==parent){
+                //     continue;
+                // }
                 if(!visited[i]){
                     visited[i]=1;
                     colour[i]=!curcol;
                     q.push({i,curnode,!curcol});
-                }else if(colour[i]==curcol){
+                }else if(visited[i] && colour[i]==curcol){
                     return false;
                 }
             }
