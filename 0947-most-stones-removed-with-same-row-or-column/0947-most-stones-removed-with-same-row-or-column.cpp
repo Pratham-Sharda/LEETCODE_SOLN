@@ -56,7 +56,7 @@ public:
         // Count the number of connected components
         int ctr = 0;
         for (int i = 0; i < parent.size(); i++) {
-            if (find(parent, i) == i && rank[i]>0) {
+            if (find(parent, i) == i && rank[find(parent, i) ]>0) {
                 ctr++;
             }
         }
