@@ -54,14 +54,13 @@ public:
         }
 
         // Count the number of connected components
-        int ctr = 0;
-        for (int i = 0; i < parent.size(); i++) {
-            if (find(parent, i) == i && rank[find(parent, i) ]>0) {
-                ctr++;
-            }
-        }
+        unordered_set<int> st;
 
+        for(int i=0;i<stones.size();i++){
+            int pa=find(parent,stones[i][0]);
+            st.insert(pa);
+        }
         // The result is the number of stones minus the number of connected components
-        return stones.size() - ctr;
+        return stones.size() - st.size();
     }
 };
