@@ -11,32 +11,31 @@
  */
 class Solution {
 public:
-    int maxDepth(TreeNode* root) {
+    int height(TreeNode* root){
         if(root==NULL){
             return 0;
         }
-        int le=maxDepth(root->left);
-        int re=maxDepth(root->right);
-
-        return max(le,re)+1;
-    }
-    // void balance(TreeNode* root,bool val){
-
-    //     int h1=balance()
-    // }
-    bool isBalanced(TreeNode* root) {
-        if (root==NULL){
-            return true;
+        int lh=height(root->left);
+        if(lh==-1){
+            return -1;
         }
-        int h1=maxDepth(root->left);
-        int h2=maxDepth(root->right);
-        
-        if(h1==1 && h2==1){
-            return true;
-        }if(abs(h1-h2)<=1){
-            return isBalanced(root->left) && isBalanced(root->right);
-        }else{
+        int rh=height(root->right);
+        if(rh==-1){
+            return -1;
+        }
+        if(abs(lh-rh)>1){
+            return -1;
+        }
+
+        return max(lh,rh)+1;
+    }
+    bool isBalanced(TreeNode* root) {
+        int x=height(root);
+
+        if(x==-1){
             return false;
+        }else{
+            return true;
         }
     }
 };
